@@ -1,5 +1,5 @@
 // Enemies our player must avoid
-var Enemy = function (x,y,dv) {
+var Enemy = function (x, y, dv) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
@@ -10,7 +10,7 @@ var Enemy = function (x,y,dv) {
     this.y = y + 55;
     this.dv = dv;
     this.col = 101;
-    this.border = this.col*5;
+    this.border = this.col * 5;
     this.reset = -this.col;
 };
 
@@ -41,9 +41,10 @@ class Player {
         this.col = 101;
         this.row = 83;
         this.initialX = this.col * 2;
-        this.initialY = (this.row * 5) - 20;
+        this.initialY = (this.row * 4) + 55;
         this.x = this.initialX;
         this.y = this.initialY;
+        this.victory = false;
     }
 
     render() {
@@ -63,7 +64,7 @@ class Player {
                 }
                 break;
             case 'down':
-                if (this.y < this.row*4) {
+                if (this.y < this.row * 4) {
                     this.y += this.row;
                 }
                 break;
@@ -81,7 +82,21 @@ class Player {
     }
 
     update() {
-        
+        for (let enemy of allEnemies) {
+            if (this.y === enemy.y && ((enemy.x + enemy.col / 2) > this.x &&
+            enemy.x < (this.x + this.col / 2))) {
+                this.reset();
+            }
+        }
+
+        if (this.y === 55) {
+            this.victory = true;
+        }
+    }
+
+    reset() {
+        this.y = this.initialY;
+        this.x = this.initialX;
     }
 }
 
@@ -92,7 +107,7 @@ const player = new Player();
 const allEnemies = [];
 const enemy1 = new Enemy(-101, 0, 200);
 const enemy2 = new Enemy(-101, 83, 300);
-const enemy3 = new Enemy((-101*3), 83, 300);
+const enemy3 = new Enemy((-101 * 3), 83, 300);
 allEnemies.push(enemy1, enemy2, enemy3);
 
 
