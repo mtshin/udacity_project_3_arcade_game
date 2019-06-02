@@ -25,6 +25,19 @@ var Engine = (function (global) {
         lastTime,
         id;
 
+    const modal = document.querySelector('.modal_background');
+    const replay = document.querySelector('.modal_replay');
+
+    /**
+         * Reset game on replay button click
+         */
+        replay.addEventListener('click', function() {
+            modal.classList.toggle('modal_hide');
+            player.reset();
+            player.victory = false;
+            win.requestAnimationFrame(main);
+        });
+
     canvas.width = 505;
     canvas.height = 606;
     doc.body.appendChild(canvas);
@@ -58,6 +71,7 @@ var Engine = (function (global) {
          */
         if (player.victory === true) {
             win.cancelAnimationFrame(id);
+            modal.classList.toggle('modal_hide');
         } else {
             /* Use the browser's requestAnimationFrame function to call this
              * function again as soon as the browser is able to draw another frame.

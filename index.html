@@ -4,8 +4,26 @@
     <meta charset="UTF-8">
     <title>Effective JavaScript: Frogger</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Indie+Flower">
 </head>
 <body>
+    <div class="modal_background modal_hide">
+            <div class="modal_body">
+                <div class="modal_head">
+                    <h1 class="modal_title">modal title</h1>
+                    <span class="modal_close">x</span>
+                </div>
+                <div class="modal_stats">
+                    <span class="modal_time">time</span>
+                    <span class="modal_stars">stars</span>
+                    <span class="modal_moves">moves</span>
+                </div>
+                <div class="modal_buttons">
+                    <button class="modal_button modal_cancel">cancel</button>
+                    <button class="modal_button modal_replay">replay</button>
+                </div>
+            </div>
+    </div>
     <script src="js/resources.js"></script>
     <script src="js/app.js"></script>
     <script src="js/engine.js"></script>
