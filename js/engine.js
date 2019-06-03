@@ -29,14 +29,14 @@ var Engine = (function (global) {
     const replay = document.querySelector('.modal_replay');
 
     /**
-         * Reset game on replay button click
-         */
-        replay.addEventListener('click', function() {
-            modal.classList.toggle('modal_hide');
-            player.reset();
-            player.victory = false;
-            win.requestAnimationFrame(main);
-        });
+     * Reset game on replay button click
+     */
+    replay.addEventListener('click', function() {
+        modal.classList.toggle('modal_hide');
+        player.reset();
+        player.victory = false;
+        win.requestAnimationFrame(main);
+    });
 
     canvas.width = 505;
     canvas.height = 606;
@@ -71,6 +71,9 @@ var Engine = (function (global) {
          */
         if (player.victory === true) {
             win.cancelAnimationFrame(id);
+            player.elapsedTime = Date.now() - player.startTime;
+            document.getElementById('stepCount').innerHTML = player.stepCount;
+            document.getElementById('timer').innerHTML = player.elapsedTime/1000 + ' second(s)';
             modal.classList.toggle('modal_hide');
         } else {
             /* Use the browser's requestAnimationFrame function to call this

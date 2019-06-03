@@ -45,6 +45,9 @@ class Player {
         this.x = this.initialX;
         this.y = this.initialY;
         this.victory = false;
+        this.stepCount = 0;
+        this.startTime = 0;
+        this.elapsedTime = 0;
     }
 
     render() {
@@ -57,6 +60,8 @@ class Player {
      * @param {string} input user provided direction keys presses
      */
     handleInput(input) {
+        this.startTimer();
+        this.stepCount++;
         switch (input) {
             case 'left':
                 if (this.x > 0) {
@@ -81,6 +86,12 @@ class Player {
         }
     }
 
+    startTimer() {
+        if (this.stepCount === 0) {
+            this.startTime = Date.now();
+        }
+    }
+
     update() {
         for (let enemy of allEnemies) {
             if (this.y === enemy.y && ((enemy.x + enemy.col / 2) > this.x &&
@@ -95,8 +106,11 @@ class Player {
     }
 
     reset() {
+        clearInterval(time);
         this.y = this.initialY;
         this.x = this.initialX;
+        this.stepCount = 0;
+        this.sec = 0;
     }
 }
 
@@ -104,6 +118,8 @@ class Player {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 const player = new Player();
+const stepCount = this.stepCount;
+const time = this.time;
 const allEnemies = [];
 const enemy1 = new Enemy(-101, 0, 200);
 const enemy2 = new Enemy(-101, 83, 300);
