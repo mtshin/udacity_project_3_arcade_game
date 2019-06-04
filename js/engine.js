@@ -31,7 +31,7 @@ var Engine = (function (global) {
     /**
      * Reset game on replay button click
      */
-    replay.addEventListener('click', function() {
+    replay.addEventListener('click', function () {
         modal.classList.toggle('modal_hide');
         player.reset();
         player.victory = false;
@@ -72,8 +72,9 @@ var Engine = (function (global) {
         if (player.victory === true) {
             win.cancelAnimationFrame(id);
             player.elapsedTime = Date.now() - player.startTime;
-            document.getElementById('stepCount').innerHTML = player.stepCount;
-            document.getElementById('timer').innerHTML = player.elapsedTime/1000 + ' second(s)';
+            // Update modal with end game stats
+            document.getElementById('modal_stepCount').innerHTML = player.stepCount;
+            document.getElementById('modal_timer').innerHTML = Math.round(100 * (player.elapsedTime / 1000)) / 100 + ' second(s)';
             modal.classList.toggle('modal_hide');
         } else {
             /* Use the browser's requestAnimationFrame function to call this

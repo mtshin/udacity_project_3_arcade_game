@@ -1,7 +1,25 @@
+/**
+* Base styles
+*/
+
 body {
     text-align: center;
     font-family: 'Indie Flower', cursive;
 }
+
+h1 {
+    font-size: 3em;
+    font-weight: 300;
+}
+
+.game_description {
+    font-size: 1.4rem;
+    margin-bottom: 0rem;
+}
+
+/**
+* Styles for modal
+*/
 
 .modal_background {
     position: absolute;

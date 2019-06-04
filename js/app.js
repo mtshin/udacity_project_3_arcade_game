@@ -38,8 +38,10 @@ Enemy.prototype.render = function () {
 class Player {
     constructor() {
         this.sprite = 'images/char-boy.png';
+        this.panel_stepCount = document.querySelector('.panel_stepCount');
+        this.panel_timer = document.querySelector('.panel_timer');
         this.col = 101;
-        this.row = 83;
+        this.row = 86;
         this.initialX = this.col * 2;
         this.initialY = (this.row * 4) + 55;
         this.x = this.initialX;
@@ -60,8 +62,10 @@ class Player {
      * @param {string} input user provided direction keys presses
      */
     handleInput(input) {
+        // Timer and step count trackers
         this.startTimer();
         this.stepCount++;
+        //Switch to move player model based on key inputs
         switch (input) {
             case 'left':
                 if (this.x > 0) {
@@ -86,16 +90,15 @@ class Player {
         }
     }
 
-    startTimer() {
-        if (this.stepCount === 0) {
-            this.startTime = Date.now();
-        }
-    }
-
+    /**
+     * Collision detection
+     * Enemy for loop triggers reset when player and enemy position overlap
+     * Game ends when player model reaches 'river'
+     */
     update() {
         for (let enemy of allEnemies) {
             if (this.y === enemy.y && ((enemy.x + enemy.col / 2) > this.x &&
-            enemy.x < (this.x + this.col / 2))) {
+                    enemy.x < (this.x + this.col / 2))) {
                 this.reset();
             }
         }
@@ -105,25 +108,36 @@ class Player {
         }
     }
 
+    /**
+     * Reset positions, step count, and time to initial
+     */
     reset() {
-        clearInterval(time);
         this.y = this.initialY;
         this.x = this.initialX;
         this.stepCount = 0;
-        this.sec = 0;
+        this.startTime = 0;
     }
+
+    /**
+     * Timer stars on first move
+     */
+    startTimer() {
+        if (this.stepCount === 0) {
+            this.startTime = Date.now();
+        }
+    }
+
 }
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
+const allEnemies = [];
 const player = new Player();
 const stepCount = this.stepCount;
-const time = this.time;
-const allEnemies = [];
 const enemy1 = new Enemy(-101, 0, 200);
-const enemy2 = new Enemy(-101, 83, 300);
-const enemy3 = new Enemy((-101 * 3), 83, 300);
+const enemy2 = new Enemy(-101, 86, 300);
+const enemy3 = new Enemy(-101, 172, 250);
 allEnemies.push(enemy1, enemy2, enemy3);
 
 

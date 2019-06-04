@@ -1,26 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Effective JavaScript: Frogger</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Matthew's Javascript Frogger Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Matthew's Javascript Frogger Game">
     <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Indie+Flower">
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-    <div class="modal_background modal_hide">
+    <main>
+        <header>
+            <h1 class="title">Matthew's Javascript Frogger Game</h1>
+        </header>
+        <div class="game_description">
+            <p class="game_description">Cross the treacherous road at your own peril!</p>
+        </div>
+        <div class="modal_background modal_hide">
             <div class="modal_body">
                 <div class="modal_head">
                     <h1 class="modal_title">You win!</h1>
                 </div>
                 <div class="modal_stats">
-                    <p>Time: <span id=timer></span></p>
-                    <p>Steps: <span id=stepCount></span></p>
+                    <p>Time: <span id=modal_timer></span></p>
+                    <p>Steps: <span id=modal_stepCount></span></p>
                 </div>
-                    <button class="modal_replay">Play Again</button>
+                <button class="modal_replay">Play Again</button>
             </div>
-    </div>
+        </div>
+    </main>
     <script src="js/resources.js"></script>
     <script src="js/app.js"></script>
     <script src="js/engine.js"></script>
 </body>
+
 </html>
