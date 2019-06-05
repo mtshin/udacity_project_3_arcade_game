@@ -8,7 +8,7 @@ The objective of the game is to move the player model with keyboard arrow keys u
 
 The game timer begins when the player makes the first step. Game metrics are shown on the modal upon this victory condition.
 
-This game can be played by running the included index.html.
+This game can be on [this repo's GitHub hosted page](https://mtshin.github.io/udacity_project_3_arcade_game/).
 
 ## Dependencies
 
