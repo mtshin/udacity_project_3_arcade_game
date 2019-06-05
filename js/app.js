@@ -66,6 +66,7 @@ class Player {
         this.startTimer();
         this.stepCount++;
         //Switch to move player model based on key inputs
+        console.log(this.y);
         switch (input) {
             case 'left':
                 if (this.x > 0) {
@@ -97,8 +98,8 @@ class Player {
      */
     update() {
         for (let enemy of allEnemies) {
-            if (this.y === enemy.y && ((enemy.x + enemy.col / 2) > this.x &&
-                    enemy.x < (this.x + this.col / 2))) {
+            if (this.y === enemy.y && ((enemy.x + enemy.col / 1.3) > this.x &&
+                    enemy.x < (this.x + this.col / 1.3))) {
                 this.reset();
             }
         }
